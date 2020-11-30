@@ -84,16 +84,14 @@ public class Cities {
             System.out.print("Enter the number of cities: ");
             try {
                 numberOfCities = Integer.parseInt(r.readLine());
+                if (numberOfCities <= 0 && numberOfCities > 10000){
+                    throw new NumberFormatException();
+                }
             } catch (NumberFormatException ex) {
                 System.out.println("Incorrect input. Enter integer 0<n<=10000 ");
                 continue;
             }
-            if (numberOfCities > 0 && numberOfCities <= 10000) {
-                System.out.println("cities: " + numberOfCities);
-                break;
-            } else {
-                System.out.println(("Incorrect input. Enter integer 0<n<=10000 "));
-            }
+            break;
         }
         currentCityNumber = 0; // index if current city
         matrix = this.initMatrix(matrix, numberOfCities);
