@@ -102,7 +102,6 @@ public class Cities {
                     name = r.readLine();
                     if (name.length() <= CITY_NAME_LENGTH && name.length() > 0) {
                         for (int i = 0; i < name.length(); i++) {
-                            System.out.println(i + ": " + (int) name.charAt(i));
                             if ((int) name.charAt(i) < 97 || (int) name.charAt(i) > 122) { //compare (a-z) codes in ASCII
                                 System.out.println("City name must be only letters a-z. Try again.");
                                 break again;
