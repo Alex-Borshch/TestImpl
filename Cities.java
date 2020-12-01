@@ -68,17 +68,14 @@ public class Cities {
             System.out.print("Enter the number of test: ");
             try {
                 numberOfTest = Integer.parseInt(r.readLine());
+                if (numberOfTest <= 0 && numberOfTest > 10){
+                    throw new NumberFormatException();
+                }
             } catch (NumberFormatException ex) {
                 System.out.println("Incorrect input. Enter integer 0<n<10 ");
                 continue;
             }
-            if (numberOfTest > 0 && numberOfTest <= 10) {
-                System.out.println("tests: " + numberOfTest);
-                System.out.println("tests OK"); //del
-                break;
-            } else {
-                System.out.println("Incorrect input. Enter integer 0<n<10 ");
-            }
+            break;
         }
         while (true) {
             System.out.print("Enter the number of cities: ");
@@ -105,11 +102,11 @@ public class Cities {
                     name = r.readLine();
                     if (name.length() <= CITY_NAME_LENGTH && name.length() > 0) {
                         for (int i = 0; i < name.length(); i++) {
+                            System.out.println(i + ": " + (int) name.charAt(i));
                             if ((int) name.charAt(i) < 97 || (int) name.charAt(i) > 122) { //compare (a-z) codes in ASCII
                                 System.out.println("City name must be only letters a-z. Try again.");
                                 break again;
                             }
-                            break;
                         }
                     } else {
                         System.out.println("Сity name must not be longer than 10 chars. Try again.");
@@ -117,8 +114,9 @@ public class Cities {
                     }
 
                     cityNames.put(name, city);
-                    System.out.print("Number of neighbours in " + name + ": ");
+
                     while (true) {
+                        System.out.print("Number of neighbours in " + name + ": ");
                         try {
                             countNeighbors = Integer.parseInt(r.readLine());
                             if (countNeighbors >= numberOfCities) {
