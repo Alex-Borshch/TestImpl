@@ -19,12 +19,12 @@ public class Brackets {
         }
         scanner.close();
         System.out.println(n);
-        System.out.println("Number of valid balanced parentheses is " + calculate(n));
+        System.out.println("Number of balanced parentheses is " + calculate(n));
 
     }
 
     /*
-     * C[n] - number of valid balanced parentheses of length 2n;
+     * C[n] - number of balanced parentheses of length 2n;
      * C[0] = 1 (empty sequence);
      * The recurrent formula for Cn is:
      * C[n] = C[0]C[n - 1] + C[1]C[n - 2] + C[2]C[n - 3] +...+ C[n - 2]C[1] + C[n - 1]C[0];
