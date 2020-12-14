@@ -5,23 +5,26 @@ public class Brackets {
         int n;
         Scanner scanner = new Scanner(System.in);
         while (true){
+            try{
             System.out.print("Enter integer N >= 0: ");
             n = scanner.nextInt();
             if (n < 0){
-                System.out.print("Incorrect input. Try again. ");
+                throw new NumberFormatException();
             }
-            else {
-                break;
-            }
+            } catch (Exception ex) {
+                System.out.println("Incorrect input. Enter integer 0<n<=10000 ");
+                continue;
+            } 
+            break;
         }
         scanner.close();
         System.out.println(n);
-        System.out.println("Number of balanced bracket sequences is " + calculate(n));
+        System.out.println("Number of valid balanced parentheses is " + calculate(n));
 
     }
 
     /*
-     * C[n] - number of balanced bracket sequences of length 2n;
+     * C[n] - number of valid balanced parentheses of length 2n;
      * C[0] = 1 (empty sequence);
      * The recurrent formula for Cn is:
      * C[n] = C[0]C[n - 1] + C[1]C[n - 2] + C[2]C[n - 3] +...+ C[n - 2]C[1] + C[n - 1]C[0];
